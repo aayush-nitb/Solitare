@@ -1,12 +1,23 @@
 extends layout
 
 block css
-  link(rel="stylesheet", href="#{url('appearance/style.less')}")
-  
+    style.
+        #card{
+            width: 73px;
+            height: 98px;
+            background-image: url('#{url("images/card-back-blue.png")}');
+            background-position: 0 0;
+            background-size: 100% 100%;
+        }
+
 block js
-  script(src="#{url('controllers/script.coffee')}")
-  
+    script.
+        function images(file) {
+            return "url(#{url('images/')}" + file + ")"
+        }
+    script(src="#{url('controllers/script.coffee')}")
+
 block molecules
 
 block content
-  .card
+    #card

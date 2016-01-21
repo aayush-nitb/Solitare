@@ -1,0 +1,31 @@
+extends layout
+
+block css
+    style.
+        /*noinspection ALL*/
+        solitare-card {
+            position: absolute;
+        }
+        #openedCards {
+            width: 75px;
+            height: 100px;
+            border-radius: 3px;
+            margin: 5px;
+            padding: 1px 0 0 1px;
+            background: repeating-linear-gradient(
+                    45deg,
+                    #ccc,
+                    #ccc 3px,
+                    #eee 3px,
+                    #eee 6px
+            );
+        }
+
+block js
+    script(src="#{url('controllers/script.coffee')}")
+
+block molecules
+    link(rel="import", href="/molecules/solitare-card")
+
+block content
+    #openedCards
