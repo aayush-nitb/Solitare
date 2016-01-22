@@ -9,12 +9,26 @@ block js
 block molecules
     link(rel="import", href="/molecules/solitare-closed-deck")
     link(rel="import", href="/molecules/solitare-single-suit")
+    link(rel="import", href="/molecules/solitare-alternate-stack")
+    link(rel="import", href="/molecules/solitare-closed-stack")
 
 block content
-    #firstRow
-        #goalContainer
-            solitare-single-suit
-            solitare-single-suit
-            solitare-single-suit
-            solitare-single-suit
-        solitare-closed-deck
+    #container
+
+        #firstRow
+            #goalContainer
+                solitare-single-suit
+                solitare-single-suit
+                solitare-single-suit
+                solitare-single-suit
+            solitare-closed-deck
+
+        #secondRow
+            solitare-closed-stack
+            solitare-closed-stack
+            solitare-closed-stack
+            solitare-closed-stack
+            solitare-closed-stack
+            solitare-closed-stack
+            solitare-closed-stack
+            solitare-closed-stack

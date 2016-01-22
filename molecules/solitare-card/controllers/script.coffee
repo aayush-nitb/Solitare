@@ -15,6 +15,11 @@ Polymer
       value: 'false'
       notify: true
       reflectToAttribute: true
+    draggable:
+      type: String
+      value: 'true'
+      notify: true
+      reflectToAttribute: true
 
   _xy: () ->
     x = -73 * (this.value - 1) + 'px'
@@ -26,6 +31,8 @@ Polymer
     return x+y
 
   _setDrag: (draggable) ->
+    if this.draggable is 'false'
+      return
     if draggable
       $(this.$$ '#card').draggable
         snap: true
@@ -64,3 +71,7 @@ Polymer
     this.suit = suit
     this.value = value
     this.openedCard['background-position'] = this._xy()
+
+  setDraggable: (value) ->
+    this.draggable = value
+    this._setDrag this.show

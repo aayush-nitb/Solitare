@@ -1,0 +1,19 @@
+extends layout
+
+block css
+    style.
+        /*noinspection ALL*/
+        #stack > solitare-alternate-stack {
+            position: absolute;
+            top: 20px;
+        }
+
+block js
+    script(src="#{url('controllers/script.coffee')}")
+
+block molecules
+    link(rel="import", href="/molecules/solitare-card")
+
+block content
+    #stack
+        solitare-card(suit="{{suit}}", value="{{value}}", show="true", draggable="false")
