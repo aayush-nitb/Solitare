@@ -4,3 +4,5 @@
 /bower_components
 /public/stylesheets
 /public/javascripts/app.coffee.js
+/.idea
+/public
