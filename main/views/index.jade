@@ -2,6 +2,7 @@ extends layout
 
 block css
     link(rel='stylesheet', href="#{url('appearance/style.less')}")
+    link(rel='stylesheet', href="#{url('appearance/flexbox.less')}")
   
 block js
     script(src="#{url('controllers/app.coffee')}")
@@ -13,17 +14,17 @@ block molecules
     link(rel="import", href="/molecules/solitare-closed-stack")
 
 block content
-    #container
+    .-fx.-col.-alignC
 
-        #firstRow
-            #goalContainer
+        #firstRow.-fx.-row.-alignLR
+            #goalContainer.-fx.-row.-alignL
                 solitare-single-suit
                 solitare-single-suit
                 solitare-single-suit
                 solitare-single-suit
             solitare-closed-deck
 
-        #secondRow
+        #secondRow.-fx.-row.-alignLR
             solitare-closed-stack
             solitare-closed-stack
             solitare-closed-stack

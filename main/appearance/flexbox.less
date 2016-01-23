@@ -1,0 +1,166 @@
+.flex-row-align() {
+    &.-alignL {
+        justify-content: flex-start;
+    }
+
+    &.-alignR {
+        justify-content: flex-end;
+    }
+
+    &.-alignJ {
+        justify-content: space-around;
+    }
+
+    &.-alignC {
+        justify-content: center;
+    }
+
+    &.-alignLR {
+        justify-content: space-between;
+    }
+
+    &.-alignT {
+        align-items: flex-start;
+    }
+
+    &.-alignB {
+        align-items: flex-end;
+    }
+
+    &.-alignM {
+        align-items: center;
+    }
+
+    &.-alignBase {
+        align-items: baseline;
+    }
+
+    &.-alignTB {
+        align-items: stretch;
+    }
+}
+
+.flex-col-align() {
+    &.-alignL {
+        align-items: flex-start;
+    }
+
+    &.-alignR {
+        align-items: flex-end;
+    }
+
+    &.-alignJ {
+        justify-content: space-around;
+    }
+
+    &.-alignC {
+        align-items: center;
+    }
+
+    &.-alignLR {
+        align-items: stretch;
+    }
+
+    &.-alignT {
+        justify-content: flex-start;
+    }
+
+    &.-alignB {
+        justify-content: flex-end;
+    }
+
+    &.-alignM {
+        justify-content: center;
+    }
+
+    &.-alignTB {
+        justify-content: space-between;
+    }
+}
+
+.flex-row-padd() {
+    &.-paddT {
+        align-content: flex-end;
+    }
+
+    &.-paddB {
+        align-content: flex-start;
+    }
+
+    &.-paddM {
+        align-content: space-between;
+    }
+
+    &.-paddAll {
+        align-content: space-around;
+    }
+
+    &.-paddTB {
+        align-content: center;
+    }
+
+    &.-paddNone {
+        align-content: stretch;
+    }
+}
+
+.flex-col-padd() {
+    &.-paddL {
+        align-content: flex-end;
+    }
+
+    &.-paddR {
+        align-content: flex-start;
+    }
+
+    &.-paddC {
+        align-content: space-between;
+    }
+
+    &.-paddAll {
+        align-content: space-around;
+    }
+
+    &.-paddLR {
+        align-content: center;
+    }
+
+    &.-paddNone {
+        align-content: stretch;
+    }
+}
+
+.flex-wrap() {
+    &.-wrap {
+        flex-wrap: wrap;
+    }
+
+    &.-rwrap {
+        flex-wrap: wrap-reverse;
+    }
+}
+
+.-fx{
+    display: flex;
+    &.-col{
+        flex-direction: column;
+        .flex-col-align();
+        .flex-col-padd();
+    }
+    &.-row{
+        flex-direction: row;
+        .flex-row-align();
+        .flex-row-padd();
+    }
+    &.-rcol{
+        flex-direction: column-reverse;
+        .flex-col-align();
+        .flex-col-padd();
+    }
+    &.-rrow{
+        flex-direction: row-reverse;
+        .flex-row-align();
+        .flex-row-padd();
+    }
+    .flex-wrap();
+}

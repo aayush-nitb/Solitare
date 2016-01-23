@@ -12,6 +12,7 @@ Polymer
       reflectToAttribute: true
 
   ready: () ->
+    ###
     $(this.$$ '#stack').draggable
       snap: true
       snapMode: 'inner'
@@ -20,3 +21,4 @@ Polymer
     .droppable drop: (e, ui) ->
       oldStack = ui.draggable.parent()
       oldStack.appendTo this
+    ###
