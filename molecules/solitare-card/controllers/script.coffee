@@ -37,13 +37,14 @@ Polymer
 
     _setDrag: () ->
         card = $(this.$$ '#card')
+
         if this.draggable is 'true' and this.show is 'true'
             if this.debug is 'true'
                 this.log 'is now draggable'
             card.draggable
-            snap: true
-            snapMode: 'inner'
-            revert: true
+                snap: true
+                snapMode: 'inner'
+                revert: true
         else
             if this.debug is 'true'
                 this.log 'is now undraggable'
