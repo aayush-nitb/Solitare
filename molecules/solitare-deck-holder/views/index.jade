@@ -2,11 +2,8 @@ extends layout
 
 block css
     style.
-        /*noinspection ALL*/
-        solitare-card {
-            height: 5px;
-        }
-        #closedCards {
+        :host {
+            display: flex;
             width: 75px;
             height: 100px;
             border-radius: 3px;
@@ -19,15 +16,11 @@ block css
                     #eee 3px,
                     #eee 6px
             );
-            display: flex;
-            flex-direction: column;
         }
 
 block js
     script(src="#{url('controllers/script.coffee')}")
 
 block molecules
-    link(rel="import", href="/molecules/solitare-card")
 
 block content
-    #closedCards
