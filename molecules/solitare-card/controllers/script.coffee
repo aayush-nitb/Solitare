@@ -50,7 +50,7 @@ Polymer
                 this.log 'is now undraggable'
             if card.data 'ui-draggable'
                 card.draggable "destroy"
-        card
+        card.parent()
 
     ready: () ->
         this.openedCard =
