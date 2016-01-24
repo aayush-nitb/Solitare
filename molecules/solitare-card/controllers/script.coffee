@@ -48,7 +48,7 @@ Polymer
         else
             if this.debug is 'true'
                 this.log 'is now undraggable'
-            if card.is 'ui-draggable'
+            if card.data 'ui-draggable'
                 card.draggable "destroy"
         card
 
