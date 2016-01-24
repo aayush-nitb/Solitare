@@ -1,3 +1,5 @@
+includes = ['test']
+
 path = require 'path'
 
 appRoot = path.resolve "."
@@ -27,4 +29,5 @@ exports.configure = (app, fileProvider) ->
   app.get '/molecules/:molecule', moleculeIndex
   app.get '/public/main/images/:image', mainImages
   app.get '/public/molecules/:molecule/images/:image', moleculeImages
+  require('./' + inc).configure(app, fileProvider) for inc in includes
   return
