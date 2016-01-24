@@ -42,7 +42,7 @@ Polymer
             if this.debug is 'true'
                 this.log 'is now draggable'
             card.draggable
-                snap: true
+                snap: '.waiting-for-card'
                 snapMode: 'inner'
                 revert: true
         else
@@ -87,6 +87,13 @@ Polymer
     setDraggable: (value) ->
         this.draggable = value
         this._setDrag()
+
+    color: () ->
+        switch this.suit
+            when 'clubs' then "black"
+            when 'spades' then "black"
+            when 'hearts' then "red"
+            when 'diamonds' then "red"
 
     log: (msg) ->
         console.log 'card(' + this.suit + ',' + this.value + '): ' + msg

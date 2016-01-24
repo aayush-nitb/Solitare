@@ -12,6 +12,10 @@ block css
         #stack solitare-card[show='false'] {
             height: 5px;
         }
+        #stack #nested-stack {
+            width: 73px;
+            height: 98px;
+        }
 block js
     script(src="#{url('controllers/script.coffee')}")
 
@@ -21,3 +25,4 @@ block molecules
 block content
     #stack
         solitare-card(suit="{{suit}}", value="{{value}}", show="{{show}}", draggable="false")
+        #nested-stack.waiting-for-card
