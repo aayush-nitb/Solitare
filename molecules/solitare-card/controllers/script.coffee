@@ -26,6 +26,16 @@ Polymer
             notify: true
             reflectToAttribute: true
 
+    attributeChanged: (name, type) ->
+        if name is 'suit' or name is 'value'
+            this.set this.suit, this.value
+        if name is 'draggable'
+            this.setDraggable this.draggable
+        if name is 'show' and this.show is 'true'
+            this.openCard()
+        if name is 'show' and this.show is 'false'
+            this.closeCard()
+
     _xy: () ->
         x = -100 * (this.value - 1) + '%'
         y = switch
@@ -66,10 +76,15 @@ Polymer
             when 'true' then $(this).css this.openedCard
             when 'false' then $(this).css this.closedCard
 
+        if this.suit is undefined and this.value is undefined and this.show is 'true'
+            this.shuffle()
+
         this._setDrag()
 
     openCard: () ->
         this.show = 'true'
+        if this.suit is undefined and this.value is undefined
+            this.shuffle()
         $(this).css this.openedCard
         this._setDrag()
 
@@ -82,7 +97,14 @@ Polymer
         this.suit = suit
         this.value = value
         this.openedCard['background-position'] = this._xy()
+        if this.show is 'true' then this.openCard() else this.closeCard()
         this._setDrag()
+
+    shuffle: () ->
+        suits = ['clubs', 'spades', 'hearts', 'diamonds']
+        suit = Math.floor 4 * Math.random()
+        value = 1 + Math.floor 13 * Math.random()
+        this.set suits[suit], value
 
     setDraggable: (value) ->
         this.draggable = value

@@ -1,0 +1,23 @@
+{
+  "name": "solitare-card",
+  "version": "0.0.1",
+  "author": "aayush.nitb@gmail.com",
+  "dependencies": {},
+  "attrs": {
+    "suit": ["string", "clubs", "signifies the suit amongst clubs, diamonds, spades and hearts"],
+    "value": ["integer", "1", "signifies the card number from 1 to 13"],
+    "show": ["true|false", "false", "signifies whether card is open or not"],
+    "draggable": ["true|false", "true", "signifies whether an open card can move"],
+    "debug": ["true|false", "true", "signifies whether an open card can move"]
+  },
+  "methods": {
+    "openCard()": "show card face",
+    "closeCard()": "show card back",
+    "set(suit, value)": "set suit and value attrs",
+    "shuffle()": "set random suit and value attrs",
+    "setDraggable(bool)": "set draggable attr",
+    "color()": "get color of the card",
+    "log(msg)": "print tagged message in console"
+  }
+  "childNodes": []
+}

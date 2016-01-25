@@ -1,0 +1,15 @@
+{
+  "name": "solitare-deck",
+  "version": "0.0.1",
+  "author": "aayush.nitb@gmail.com",
+  "dependencies": {
+    "solitare-card": "*"
+  },
+  "attrs": {
+    
+  },
+  "methods": {
+    
+  }
+  "childNodes": ["solitare-card"]
+}
