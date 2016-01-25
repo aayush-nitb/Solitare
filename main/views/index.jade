@@ -3,33 +3,12 @@ extends layout
 block css
     link(rel='stylesheet', href="#{url('appearance/style.less')}")
     link(rel='stylesheet', href="#{url('appearance/flexbox.less')}")
-  
+
 block js
     script(src="#{url('controllers/app.coffee')}")
 
 block molecules
-    link(rel="import", href="/molecules/solitare-closed-deck")
-    link(rel="import", href="/molecules/solitare-single-suit")
-    link(rel="import", href="/molecules/solitare-deck-holder")
-    link(rel="import", href="/molecules/solitare-alternate-stack")
+    link(rel="import", href="/molecules/solitare-card")
 
 block content
-    .-fx.-col.-alignC
-
-        #firstRow.-fx.-row.-alignLR
-            #goalContainer.-fx.-row.-alignL
-                solitare-single-suit
-                solitare-single-suit
-                solitare-single-suit
-                solitare-single-suit
-            solitare-closed-deck
-
-        #secondRow.-fx.-row.-alignLR
-            solitare-deck-holder
-            solitare-deck-holder
-            solitare-deck-holder
-            solitare-deck-holder
-            solitare-deck-holder
-            solitare-deck-holder
-            solitare-deck-holder
-            solitare-deck-holder
+    solitare-card(suit="diamonds", value="13", show="false", style="width:150px;height:200px")

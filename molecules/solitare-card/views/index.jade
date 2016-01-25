@@ -2,7 +2,8 @@ extends layout
 
 block css
     style.
-        #card{
+        :host {
+            display: block;
             width: 73px;
             height: 98px;
             background-image: url('#{url("images/card-back-blue.png")}');
@@ -20,4 +21,3 @@ block js
 block molecules
 
 block content
-    #card
