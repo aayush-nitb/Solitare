@@ -10,6 +10,10 @@ block css
             background-position: 0 0;
             background-size: 100% 100%;
         }
+        :host > ::content > * {
+            left: var(--dx);
+            top: var(--dy);
+        }
 
 block js
     script.
@@ -21,3 +25,4 @@ block js
 block molecules
 
 block content
+    content

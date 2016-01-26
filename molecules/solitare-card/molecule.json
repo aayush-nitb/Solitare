@@ -8,7 +8,9 @@
     "value": ["integer", "1", "signifies the card number from 1 to 13"],
     "show": ["true|false", "false", "signifies whether card is open or not"],
     "draggable": ["true|false", "true", "signifies whether an open card can move"],
-    "debug": ["true|false", "true", "signifies whether an open card can move"]
+    "debug": ["true|false", "true", "signifies whether an open card can move"],
+    "dx": ["integer", "0", "signifies the relative position of inner card in x direction"],
+    "dy": ["integer", "20", "signifies the relative position of inner card in y direction"]
   },
   "methods": {
     "openCard()": "show card face",
@@ -16,6 +18,7 @@
     "set(suit, value)": "set suit and value attrs",
     "shuffle()": "set random suit and value attrs",
     "setDraggable(bool)": "set draggable attr",
+    "align(dx, dy)": "set relative position of inner card",
     "color()": "get color of the card",
     "log(msg)": "print tagged message in console"
   }

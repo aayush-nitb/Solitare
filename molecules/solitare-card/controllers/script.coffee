@@ -25,10 +25,22 @@ Polymer
             value: 'false'
             notify: true
             reflectToAttribute: true
+        dx:
+            type: Number
+            value: 0
+            notify: true
+            reflectToAttribute: true
+        dy:
+            type: Number
+            value: 20
+            notify: true
+            reflectToAttribute: true
 
     attributeChanged: (name, type) ->
         if name is 'suit' or name is 'value'
             this.set this.suit, this.value
+        if name is 'dx' or name is 'dy'
+            this.align this.dx, this.dy
         if name is 'draggable'
             this.setDraggable this.draggable
         if name is 'show' and this.show is 'true'
@@ -79,6 +91,7 @@ Polymer
         if this.suit is undefined and this.value is undefined and this.show is 'true'
             this.shuffle()
 
+        this.align this.dx, this.dy
         this._setDrag()
 
     openCard: () ->
@@ -109,6 +122,13 @@ Polymer
     setDraggable: (value) ->
         this.draggable = value
         this._setDrag()
+
+    align: (dx, dy) ->
+        this.dx = dx
+        this.dy = dy
+        this.customStyle['--dx'] = '' + this.dx + 'px';
+        this.customStyle['--dy'] = '' + this.dy + 'px';
+        this.updateStyles();
 
     color: () ->
         switch this.suit
