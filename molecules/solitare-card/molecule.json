@@ -13,14 +13,14 @@
     "dy": ["integer", "20", "signifies the relative position of inner card in y direction. 0 means one above the other. 100 means below the parent."]
   },
   "methods": {
-    "openCard()": "show card face",
-    "closeCard()": "show card back",
-    "set(suit, value)": "set suit and value attrs",
-    "shuffle()": "set random suit and value attrs",
-    "setDraggable(bool)": "set draggable attr",
-    "align(dx, dy)": "set relative position of inner card",
-    "color()": "get color of the card",
-    "log(msg)": "print tagged message in console"
+    "openCard()": "show card face.",
+    "closeCard()": "show card back.",
+    "set(suit, value)": "set suit and value attrs.",
+    "shuffle()": "set random suit and value attrs.",
+    "setDraggable(bool)": "set draggable attr.",
+    "align(dx, dy)": "set relative position of inner card.",
+    "color()": "get color of the card. This function cannot be chained with others as it returns string.",
+    "log(msg)": "print tagged message in console. This function cannot be chained with others as it returns string."
   }
   "childNodes": []
 }

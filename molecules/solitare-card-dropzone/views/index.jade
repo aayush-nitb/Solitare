@@ -1,0 +1,16 @@
+extends layout
+
+block css
+    style.
+        :host {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+block js
+    script(src="#{url('controllers/script.coffee')}")
+
+block molecules
+
+block content

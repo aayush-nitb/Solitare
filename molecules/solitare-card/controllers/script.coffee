@@ -58,20 +58,23 @@ Polymer
         x+y
 
     _setDrag: () ->
-        card = $(this)
-
+        card = this
         if this.draggable is 'true' and this.show is 'true'
             if this.debug is 'true'
                 this.log 'is now draggable'
-            card.draggable
-                snap: '.waiting-for-card'
+            $(card).draggable
+                snap: 'solitare-card-dropzone'
                 snapMode: 'inner'
-                revert: true
+                revertDuration: 0
+                revert: (ev, ui) ->
+                    $(this).data('uiDraggable').originalPosition =
+                        left: card.customStyle['--dx']
+                        top: card.customStyle['--dy']
         else
             if this.debug is 'true'
                 this.log 'is now undraggable'
-            if card.data 'ui-draggable'
-                card.draggable "destroy"
+            if $(card).data 'ui-draggable'
+                $(card).draggable "destroy"
         card
 
     ready: () ->
@@ -111,7 +114,7 @@ Polymer
         this.value = value
         this.openedCard['background-position'] = this._xy()
         if this.show is 'true' then this.openCard() else this.closeCard()
-        this._setDrag()
+        this
 
     shuffle: () ->
         suits = ['clubs', 'spades', 'hearts', 'diamonds']
@@ -129,6 +132,7 @@ Polymer
         this.customStyle['--dx'] = '' + this.dx + '%';
         this.customStyle['--dy'] = '' + this.dy + '%';
         this.updateStyles();
+        this
 
     color: () ->
         switch this.suit
