@@ -4,13 +4,13 @@
   "author": "aayush.nitb@gmail.com",
   "dependencies": {},
   "attrs": {
-    "suit": ["string", "clubs", "signifies the suit amongst clubs, diamonds, spades and hearts"],
-    "value": ["integer", "1", "signifies the card number from 1 to 13"],
-    "show": ["true|false", "false", "signifies whether card is open or not"],
-    "draggable": ["true|false", "true", "signifies whether an open card can move"],
-    "debug": ["true|false", "true", "signifies whether an open card can move"],
-    "dx": ["integer", "0", "signifies the relative position of inner card in x direction"],
-    "dy": ["integer", "20", "signifies the relative position of inner card in y direction"]
+    "suit": ["string", "clubs", "signifies the suit amongst clubs, diamonds, spades and hearts."],
+    "value": ["integer", "1", "signifies the card number from 1 to 13."],
+    "show": ["true|false", "false", "signifies whether card is open or not."],
+    "draggable": ["true|false", "true", "signifies whether an open card can move."],
+    "debug": ["true|false", "true", "signifies whether an open card can move."],
+    "dx": ["integer", "0", "signifies the relative position of inner card in x direction. 0 means one above the other. 100 means next to each other."],
+    "dy": ["integer", "20", "signifies the relative position of inner card in y direction. 0 means one above the other. 100 means below the parent."]
   },
   "methods": {
     "openCard()": "show card face",

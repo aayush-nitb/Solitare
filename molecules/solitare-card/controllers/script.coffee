@@ -126,8 +126,8 @@ Polymer
     align: (dx, dy) ->
         this.dx = dx
         this.dy = dy
-        this.customStyle['--dx'] = '' + this.dx + 'px';
-        this.customStyle['--dy'] = '' + this.dy + 'px';
+        this.customStyle['--dx'] = '' + this.dx + '%';
+        this.customStyle['--dy'] = '' + this.dy + '%';
         this.updateStyles();
 
     color: () ->
