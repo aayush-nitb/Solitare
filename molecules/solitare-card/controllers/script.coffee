@@ -1,41 +1,7 @@
 Polymer
     is: 'solitare-card'
 
-    properties:
-        value:
-            type: Number
-            notify: true
-            reflectToAttribute: true
-        suit:
-            type: String
-            notify: true
-            reflectToAttribute: true
-        show:
-            type: String
-            value: 'false'
-            notify: true
-            reflectToAttribute: true
-        draggable:
-            type: String
-            value: 'true'
-            notify: true
-            reflectToAttribute: true
-        debug:
-            type: String
-            value: 'false'
-            notify: true
-            reflectToAttribute: true
-        dx:
-            type: Number
-            value: 0
-            notify: true
-            reflectToAttribute: true
-        dy:
-            type: Number
-            value: 20
-            notify: true
-            reflectToAttribute: true
-
+    ### @override ###
     attributeChanged: (name, type) ->
         if name is 'suit' or name is 'value'
             this.set this.suit, this.value
@@ -48,6 +14,7 @@ Polymer
         if name is 'show' and this.show is 'false'
             this.closeCard()
 
+    ### @private ###
     _xy: () ->
         x = -100 * (this.value - 1) + '%'
         y = switch
@@ -57,26 +24,38 @@ Polymer
             when this.suit is 'diamonds' then " -300%"
         x+y
 
+    ### @private ###
     _setDrag: () ->
-        card = this
         if this.draggable is 'true' and this.show is 'true'
             if this.debug is 'true'
                 this.log 'is now draggable'
-            $(card).draggable
-                snap: 'solitare-card-dropzone'
+            $(this).draggable
+                snap: this.dropzone
                 snapMode: 'inner'
+                revert: true
                 revertDuration: 0
-                revert: (ev, ui) ->
-                    $(this).data('uiDraggable').originalPosition =
-                        left: card.customStyle['--dx']
-                        top: card.customStyle['--dy']
+                start: (ev, ui) ->
+                    this._parentBeforeDrag = $(this).parent()
+                stop: (ev, ui) ->
+                    if this._parentBeforeDrag and this._parentBeforeDrag[0].tagName is this.tagName
+                        newStyles = []
+                        oldStyles = $(this).attr("style").split(';')
+                        for style in oldStyles
+                            style = style.trim()
+                            continue if style is ''
+                            continue if style.match(/^left:/)
+                            continue if style.match(/^top:/)
+                            newStyles.push style
+                        $(this).attr "style", newStyles.join(';')
+                    return
         else
             if this.debug is 'true'
                 this.log 'is now undraggable'
-            if $(card).data 'ui-draggable'
-                $(card).draggable "destroy"
-        card
+            if $(this).data 'ui-draggable'
+                $(this).draggable "destroy"
+        this
 
+    ### @override ###
     ready: () ->
         this.openedCard =
             'background-image': images 'cards.png'
@@ -143,3 +122,43 @@ Polymer
 
     log: (msg) ->
         console.log 'card(' + this.suit + ',' + this.value + '): ' + msg
+
+    properties:
+        value:
+            type: Number
+            notify: true
+            reflectToAttribute: true
+        suit:
+            type: String
+            notify: true
+            reflectToAttribute: true
+        show:
+            type: String
+            value: 'false'
+            notify: true
+            reflectToAttribute: true
+        draggable:
+            type: String
+            value: 'true'
+            notify: true
+            reflectToAttribute: true
+        debug:
+            type: String
+            value: 'false'
+            notify: true
+            reflectToAttribute: true
+        dx:
+            type: Number
+            value: 0
+            notify: true
+            reflectToAttribute: true
+        dy:
+            type: Number
+            value: 20
+            notify: true
+            reflectToAttribute: true
+        dropzone:
+            type: String
+            value: 'solitare-card-dropzone'
+            notify: true
+            reflectToAttribute: true
