@@ -25,6 +25,17 @@ Polymer
         x+y
 
     ### @private ###
+    _removeStyle: (attr, apply) ->
+        newStyles = []
+        oldStyles = apply or $(this).attr("style").split(';')
+        for style in oldStyles
+            style = style.trim()
+            continue if style is ''
+            continue if style.match('^' + attr + ':')
+            newStyles.push style
+        $(this).attr "style", newStyles.join(';')
+
+    ### @private ###
     _setDrag: () ->
         if this.draggable is 'true' and this.show is 'true'
             if this.debug is 'true'
@@ -35,18 +46,12 @@ Polymer
                 revert: true
                 revertDuration: 0
                 start: (ev, ui) ->
-                    this._parentBeforeDrag = $(this).parent()
+                    this._nestedBeforeDrag = this.isNested()
+                    return
                 stop: (ev, ui) ->
-                    if this._parentBeforeDrag and this._parentBeforeDrag[0].tagName is this.tagName
-                        newStyles = []
-                        oldStyles = $(this).attr("style").split(';')
-                        for style in oldStyles
-                            style = style.trim()
-                            continue if style is ''
-                            continue if style.match(/^left:/)
-                            continue if style.match(/^top:/)
-                            newStyles.push style
-                        $(this).attr "style", newStyles.join(';')
+                    if this.isNested() or this._nestedBeforeDrag
+                        this._removeStyle "left"
+                        this._removeStyle "top"
                     return
         else
             if this.debug is 'true'
@@ -76,6 +81,13 @@ Polymer
         this.align this.dx, this.dy
         this._setDrag()
 
+    ### @public ###
+    isNested: () ->
+        parent = $(this).parent()
+        return 'false' if not parent
+        return parent[0].tagName is this.tagName
+
+    ### @public ###
     openCard: () ->
         this.show = 'true'
         if this.suit is undefined and this.value is undefined
@@ -83,11 +95,13 @@ Polymer
         $(this).css this.openedCard
         this._setDrag()
 
+    ### @public ###
     closeCard: () ->
         this.show = 'false'
         $(this).css this.closedCard
         this._setDrag()
 
+    ### @public ###
     set: (suit, value) ->
         this.suit = suit
         this.value = value
@@ -95,16 +109,19 @@ Polymer
         if this.show is 'true' then this.openCard() else this.closeCard()
         this
 
+    ### @public ###
     shuffle: () ->
         suits = ['clubs', 'spades', 'hearts', 'diamonds']
         suit = Math.floor 4 * Math.random()
         value = 1 + Math.floor 13 * Math.random()
         this.set suits[suit], value
 
+    ### @public ###
     setDraggable: (value) ->
         this.draggable = value
         this._setDrag()
 
+    ### @public ###
     align: (dx, dy) ->
         this.dx = dx
         this.dy = dy
@@ -113,6 +130,7 @@ Polymer
         this.updateStyles();
         this
 
+    ### @public ###
     color: () ->
         switch this.suit
             when 'clubs' then "black"
@@ -120,6 +138,7 @@ Polymer
             when 'hearts' then "red"
             when 'diamonds' then "red"
 
+    ### @public ###
     log: (msg) ->
         console.log 'card(' + this.suit + ',' + this.value + '): ' + msg
 

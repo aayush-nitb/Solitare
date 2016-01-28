@@ -10,9 +10,11 @@
     "draggable": ["true|false", "true", "signifies whether an open card can move."],
     "debug": ["true|false", "true", "signifies whether an open card can move."],
     "dx": ["integer", "0", "signifies the relative position of inner card in x direction. 0 means one above the other. 100 means next to each other."],
-    "dy": ["integer", "20", "signifies the relative position of inner card in y direction. 0 means one above the other. 100 means below the parent."]
+    "dy": ["integer", "20", "signifies the relative position of inner card in y direction. 0 means one above the other. 100 means below the parent."],
+    "dropzone": ["string", "solitare-card-dropzone", "query selector for dom elements where card is allowed to drop."]
   },
   "methods": {
+    "isNested()": "returns whether the card is residing on another card or not.",
     "openCard()": "show card face.",
     "closeCard()": "show card back.",
     "set(suit, value)": "set suit and value attrs.",
