@@ -145,7 +145,7 @@ Polymer
     ### @public ###
     log: (msg) ->
         return if this.debug isnt 'true'
-        console.log 'card(' + this.suit + ',' + this.value + '): ' + msg
+        console.log ["card", {0:this}, msg]
 
     ### @event ###
     onReady: () ->

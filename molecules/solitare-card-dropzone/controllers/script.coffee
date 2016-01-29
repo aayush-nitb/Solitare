@@ -32,37 +32,47 @@ Polymer
     registerAcceptor: (acceptor) ->
         this._acceptor = acceptor
 
+    ### @public ###
+    log: (msg) ->
+        return if this.debug isnt 'true'
+        console.log ["card-dropzone", {0:this}, msg]
+
     ### @event ###
     onReady: () ->
-        return
+        this.log "fired default event: onReady"
 
     ### @event ###
     onDropAccept: (ev, ui) ->
-        return
+        this.log "fired default event: onDropAccept"
 
     ### @event ###
     onDropReject: (ev, ui) ->
-        return
+        this.log "fired default event: onDropReject"
 
     ### @event ###
     onDraggableMotion: (ev, ui) ->
-        return
+        this.log "fired default event: onDraggableMotion"
 
     ### @event ###
     onDraggableRest: (ev, ui) ->
-        return
+        this.log "fired default event: onDraggableRest"
 
     ### @event ###
     onDraggableEscape: (ev, ui) ->
-        return
+        this.log "fired default event: onDraggableEscape"
 
     ### @event ###
     onDraggableOver: (ev, ui) ->
-        return
+        this.log "fired default event: onDraggableOver"
 
     properties:
         accept:
             type: String
             value: 'solitare-card'
+            notify: true
+            reflectToAttribute: true
+        debug:
+            type: String
+            value: 'false'
             notify: true
             reflectToAttribute: true
