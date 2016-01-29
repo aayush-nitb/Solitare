@@ -38,8 +38,6 @@ Polymer
     ### @private ###
     _setDrag: () ->
         if this.draggable is 'true' and this.show is 'true'
-            if this.debug is 'true'
-                this.log 'is now draggable'
             $(this).draggable
                 snap: this.dropzone
                 snapMode: 'inner'
@@ -47,17 +45,21 @@ Polymer
                 revertDuration: 0
                 start: (ev, ui) ->
                     this._nestedBeforeDrag = this.isNested()
+                    this.onDragStart ev, ui
                     return
                 stop: (ev, ui) ->
                     if this.isNested() or this._nestedBeforeDrag
                         this._removeStyle "left"
                         this._removeStyle "top"
+                    this.onDragStop ev, ui
                     return
+                drag: (ev, ui) ->
+                    this.onDrag ev, ui
+                    return
+            this.log 'is now draggable'
         else
-            if this.debug is 'true'
-                this.log 'is now undraggable'
-            if $(this).data 'ui-draggable'
-                $(this).draggable "destroy"
+            $(this).draggable "destroy" if $(this).data 'ui-draggable'
+            this.log 'is now undraggable'
         this
 
     ### @override ###
@@ -80,6 +82,8 @@ Polymer
 
         this.align this.dx, this.dy
         this._setDrag()
+        this.onReady()
+        return
 
     ### @public ###
     isNested: () ->
@@ -140,7 +144,24 @@ Polymer
 
     ### @public ###
     log: (msg) ->
+        return if this.debug isnt 'true'
         console.log 'card(' + this.suit + ',' + this.value + '): ' + msg
+
+    ### @event ###
+    onReady: () ->
+        this.log "fired default event: onReady"
+
+    ### @event ###
+    onDragStart: (ev, ui) ->
+        this.log "fired default event: onDragStart"
+
+    ### @event ###
+    onDrag: (ev, ui) ->
+        this.log "fired default event: onDrag"
+
+    ### @event ###
+    onDragStop: (ev, ui) ->
+        this.log "fired default event: onDragStop"
 
     properties:
         value:

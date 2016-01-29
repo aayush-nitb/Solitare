@@ -4,10 +4,19 @@
   "author": "aayush.nitb@gmail.com",
   "dependencies": {},
   "attrs": {
-    
+    "accept": ["string", "solitare-card", "Query selector to decide which elements are allowed to drop."]
   },
   "methods": {
     "registerAcceptor(func)": "This registers a callback function which you can define when you want specific cards only to be droppable. func receives (suit, value) as argument list. If func returns true then the card is dropped else rejected."
-  }
+  },
+  "events": {
+    "onReady()": "Triggered when render completes.",
+    "onDropAccept()": "Triggered when accepted draggable is dropped.",
+    "onDropReject()": "Triggered when acceptor function return false.",
+    "onDraggableMotion(ev, ui)": "Triggered when an accepted draggable starts dragging.",
+    "onDraggableRest(ev, ui)": "Triggered when an accepted draggable stops dragging.",
+    "onDraggableEscape(ev, ui)": "Triggered when an accepted draggable is dragged out of the droppable.",
+    "onDraggableOver(ev, ui)": "Triggered when an accepted draggable is dragged over the droppable."
+  },
   "childNodes": []
 }
