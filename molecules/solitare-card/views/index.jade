@@ -24,6 +24,8 @@ block js
     script(src="#{url('controllers/script.coffee')}")
 
 block molecules
+    link(rel="import", href="/molecules/solitare-card-dropzone")
 
 block content
-    content
+    solitare-card-dropzone
+        content

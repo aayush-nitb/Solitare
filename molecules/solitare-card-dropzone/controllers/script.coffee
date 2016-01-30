@@ -8,6 +8,7 @@ Polymer
             create: (ev, ui) ->
                 observer = new MutationObserver this._observer.bind(this)
                 observer.observe this, childList:true
+                this._observer()
                 this.onReady()
                 return
             activate: (ev, ui) ->

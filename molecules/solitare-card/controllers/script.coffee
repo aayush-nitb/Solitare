@@ -93,10 +93,10 @@ Polymer
 
     ### @public ###
     isNested: () ->
-        parent = $(this).parent()
-        return 'false' if not parent
-        return 'false' if not parent.length
-        return parent[0].tagName is this.tagName
+        parents = $(this).parents(this.tagName)
+        return false if not parents
+        return false if not parents.length
+        true
 
     ### @public ###
     openCard: () ->
