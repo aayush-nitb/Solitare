@@ -14,7 +14,7 @@
     "dropzone": ["string", "solitare-card-dropzone", "Query selector for dom elements where card is allowed to drop."]
   },
   "methods": {
-    "isNested()": "Returns whether the card is residing on another card or not.",
+    "isNested()": "Returns whether the card is residing on another card or not. This function cannot be chained with others as it returns bool.",
     "openCard()": "Show card face.",
     "closeCard()": "Show card back.",
     "set(suit, value)": "Set suit and value attrs.",
@@ -22,7 +22,7 @@
     "setDraggable(bool)": "Set draggable attr.",
     "align(dx, dy)": "Set relative position of inner card.",
     "color()": "Get color of the card. This function cannot be chained with others as it returns string.",
-    "log(msg)": "Print tagged message in console. This function cannot be chained with others as it returns string."
+    "log(msg)": "Print tagged message in console."
   },
   "events": {
     "onReady()": "Triggered when render is complete.",

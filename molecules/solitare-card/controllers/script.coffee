@@ -13,6 +13,7 @@ Polymer
             this.openCard()
         if name is 'show' and this.show is 'false'
             this.closeCard()
+        return
 
     ### @private ###
     _xy: () ->
@@ -34,6 +35,7 @@ Polymer
             continue if style.match('^' + attr + ':')
             newStyles.push style
         $(this).attr "style", newStyles.join(';')
+        this
 
     ### @private ###
     _setDrag: () ->
@@ -82,6 +84,10 @@ Polymer
 
         this.align this.dx, this.dy
         this._setDrag()
+        return
+
+    ### @override ###
+    attached: () ->
         this.onReady()
         return
 
@@ -89,6 +95,7 @@ Polymer
     isNested: () ->
         parent = $(this).parent()
         return 'false' if not parent
+        return 'false' if not parent.length
         return parent[0].tagName is this.tagName
 
     ### @public ###
@@ -98,12 +105,14 @@ Polymer
             this.shuffle()
         $(this).css this.openedCard
         this._setDrag()
+        this
 
     ### @public ###
     closeCard: () ->
         this.show = 'false'
         $(this).css this.closedCard
         this._setDrag()
+        this
 
     ### @public ###
     set: (suit, value) ->
@@ -119,11 +128,13 @@ Polymer
         suit = Math.floor 4 * Math.random()
         value = 1 + Math.floor 13 * Math.random()
         this.set suits[suit], value
+        this
 
     ### @public ###
     setDraggable: (value) ->
         this.draggable = value
         this._setDrag()
+        this
 
     ### @public ###
     align: (dx, dy) ->
@@ -146,6 +157,7 @@ Polymer
     log: (msg) ->
         return if this.debug isnt 'true'
         console.log ["card", {0:this}, msg]
+        this
 
     ### @event ###
     onReady: () ->
