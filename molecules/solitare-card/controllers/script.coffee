@@ -47,6 +47,7 @@ Polymer
                 snapMode: 'inner'
                 revert: true
                 revertDuration: 0
+                zIndex: 999
                 start: (ev, ui) ->
                     this._nestedBeforeDrag = this.isNested()
                     this.onDragStart ev, ui
