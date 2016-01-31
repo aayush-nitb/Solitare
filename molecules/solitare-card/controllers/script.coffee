@@ -162,7 +162,7 @@ Polymer
     ### @public ###
     log: (msg) ->
         return if this.debug isnt 'true'
-        console.log ["card", {0:this}, msg]
+        console.log [this.tagName, {0:this}, msg]
         this
 
     ### @event ###

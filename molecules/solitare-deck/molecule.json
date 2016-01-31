@@ -2,14 +2,13 @@
   "name": "solitare-deck",
   "version": "0.0.1",
   "author": "aayush.nitb@gmail.com",
-  "dependencies": {
-    "solitare-card": "*"
-  },
+  "dependencies": {},
   "attrs": {
-    
+    "elements": ["string", "solitare-card", "Query selector to decide which elements should be modified."],
+    "modifiers": ["object", "null", "Attributes of child elements to be modified."]
   },
   "methods": {
-    
+    "setModifiers(modifiers)": "Setter function for modifiers attr.",
+    "log(msg)": "Print tagged message in console."
   }
-  "childNodes": ["solitare-card"]
 }

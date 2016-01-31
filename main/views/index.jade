@@ -9,13 +9,16 @@ block js
 
 block molecules
     link(rel="import", href="/molecules/solitare-card")
+    link(rel="import", href="/molecules/solitare-deck")
     link(rel="import", href="/molecules/solitare-card-dropzone")
 
 block content
     .-fx
-        solitare-card-dropzone
-            solitare-card(show="true")
-        solitare-card-dropzone
-            solitare-card(show="true")
+        solitare-deck
+            solitare-card-dropzone
+                solitare-card(show="true")
+        solitare-deck(modifiers='{"show":"false"}', debug="true")
+            solitare-card-dropzone
                 solitare-card(show="true")
                     solitare-card(show="true")
+                        solitare-card(show="true")

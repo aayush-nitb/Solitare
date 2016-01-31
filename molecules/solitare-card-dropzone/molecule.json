@@ -16,7 +16,7 @@
     "onDraggableMotion(ev, ui)": "Triggered when an accepted draggable starts dragging.",
     "onDraggableRest(ev, ui)": "Triggered when an accepted draggable stops dragging.",
     "onDraggableEscape(ev, ui)": "Triggered when an accepted draggable is dragged out of the droppable.",
-    "onDraggableOver(ev, ui)": "Triggered when an accepted draggable is dragged over the droppable."
-  },
-  "childNodes": []
+    "onDraggableOver(ev, ui)": "Triggered when an accepted draggable is dragged over the droppable.",
+    "log(msg)": "Print tagged message in console."
+  }
 }

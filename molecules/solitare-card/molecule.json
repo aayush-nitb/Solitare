@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "aayush.nitb@gmail.com",
   "dependencies": {
-    "solitare-card-dropzone": "*"
+    "solitare-card-dropzone": "0.0.1"
   },
   "attrs": {
     "suit": ["string", "clubs", "Signifies the suit amongst clubs, diamonds, spades and hearts."],
@@ -32,6 +32,5 @@
     "onDragStart(ev, ui)": "Triggered on jquery drag start event.",
     "onDrag(ev, ui)": "Triggered on jquery drag event, i.e, on every step while dragging.",
     "onDragStop(ev, ui)": "Triggered on jquery drag stop event."
-  },
-  "childNodes": ["solitare-card-dropzone"]
+  }
 }
