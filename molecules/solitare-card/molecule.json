@@ -27,7 +27,6 @@
     "log(msg)": "Print tagged message in console."
   },
   "events": {
-    "onReady()": "Triggered when render is complete.",
     "onDragStart(ev, ui)": "Triggered on jquery drag start event.",
     "onDrag(ev, ui)": "Triggered on jquery drag event, i.e, on every step while dragging.",
     "onDragStop(ev, ui)": "Triggered on jquery drag stop event."

@@ -9,7 +9,6 @@ Polymer
                 observer = new MutationObserver this._observer.bind(this)
                 observer.observe this, childList:true
                 this._observer()
-                this.onReady()
                 return
             activate: (ev, ui) ->
                 this.onDraggableMotion ev, ui
@@ -60,10 +59,6 @@ Polymer
         return if this.debug isnt 'true'
         console.log ["card-dropzone", {0:this}, msg]
         this
-
-    ### @event ###
-    onReady: () ->
-        this.log "fired default event: onReady"
 
     ### @event ###
     onDropAccept: (ev, ui) ->

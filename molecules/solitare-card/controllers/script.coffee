@@ -86,11 +86,6 @@ Polymer
         this._setDrag()
         return
 
-    ### @override ###
-    attached: () ->
-        this.onReady()
-        return
-
     ### @public ###
     isNested: () ->
         parents = $(this).parents(this.tagName)
@@ -158,10 +153,6 @@ Polymer
         return if this.debug isnt 'true'
         console.log ["card", {0:this}, msg]
         this
-
-    ### @event ###
-    onReady: () ->
-        this.log "fired default event: onReady"
 
     ### @event ###
     onDragStart: (ev, ui) ->

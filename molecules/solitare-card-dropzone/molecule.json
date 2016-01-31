@@ -10,7 +10,6 @@
     "registerAcceptor(func)": "This registers a callback function which you can define when you want specific cards only to be droppable. func receives (suit, value) as argument list. If func returns true then the card is dropped else rejected."
   },
   "events": {
-    "onReady()": "Triggered when render completes.",
     "onDropAccept()": "Triggered when accepted draggable is dropped.",
     "onDropReject()": "Triggered when acceptor function return false.",
     "onDraggableMotion(ev, ui)": "Triggered when an accepted draggable starts dragging.",
