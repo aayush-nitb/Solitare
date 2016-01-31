@@ -14,7 +14,7 @@
     "debug": ["true|false", "true", "Signifies whether an open card can move."],
     "dx": ["integer", "0", "Signifies the relative position of inner card in x direction. 0 means one above the other. 100 means next to each other."],
     "dy": ["integer", "20", "Signifies the relative position of inner card in y direction. 0 means one above the other. 100 means below the parent."],
-    "dropzone": ["string", "solitare-card-dropzone", "Query selector for dom elements where card is allowed to drop."]
+    "acceptor": ["string", "solitare-card-dropzone", "Query selector for dom elements where card is allowed to drop."]
   },
   "methods": {
     "isNested()": "Returns whether the card is residing on another card or not. This function cannot be chained with others as it returns bool.",
@@ -26,6 +26,7 @@
     "setDroppable(bool)": "Set droppable attr.",
     "align(dx, dy)": "Set relative position of inner card.",
     "color()": "Get color of the card. This function cannot be chained with others as it returns string.",
+    "dropzone()" "Get object of solitare-card-dropzone to access its attrs, methods and events."
     "log(msg)": "Print tagged message in console."
   },
   "events": {

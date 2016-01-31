@@ -43,7 +43,7 @@ Polymer
     _setDrag: () ->
         if this.draggable is 'true'
             $(this).draggable
-                snap: this.dropzone
+                snap: this.acceptor
                 snapMode: 'inner'
                 revert: true
                 revertDuration: 0
@@ -143,6 +143,10 @@ Polymer
         this
 
     ### @public ###
+    dropzone: () ->
+        $(this).find('> solitare-card-dropzone')[0]
+
+    ### @public ###
     align: (dx, dy) ->
         this.dx = dx
         this.dy = dy
@@ -216,7 +220,7 @@ Polymer
             value: 20
             notify: true
             reflectToAttribute: true
-        dropzone:
+        acceptor:
             type: String
             value: 'solitare-card-dropzone'
             notify: true
