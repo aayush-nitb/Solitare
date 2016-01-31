@@ -4,7 +4,8 @@
   "author": "aayush.nitb@gmail.com",
   "dependencies": {},
   "attrs": {
-    "accept": ["string", "solitare-card", "Query selector to decide which elements are allowed to drop."]
+    "accept": ["string", "solitare-card", "Query selector to decide which elements are allowed to drop."],
+    "disabled": ["true|false", "false", "Specifies whether elements are allowed to drop or not."]
   },
   "methods": {
     "registerAcceptor(func)": "This registers a callback function which you can define when you want specific cards only to be droppable. func receives (suit, value) as argument list. If func returns true then the card is dropped else rejected."

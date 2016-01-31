@@ -1,6 +1,14 @@
 Polymer
     is: 'solitare-card-dropzone'
 
+    ### @private ###
+    _attributeChanged: (name, type) ->
+        if name is 'disabled'
+            this._observer()
+        if name is 'accept'
+            $(this).droppable "option", "accept", this.accept
+        return
+
     ### @override ###
     attached: () ->
         $(this).droppable
@@ -8,6 +16,7 @@ Polymer
             create: (ev, ui) ->
                 observer = new MutationObserver this._observer.bind(this)
                 observer.observe this, childList:true
+                this.attributeChanged = this._attributeChanged
                 this._observer()
                 return
             activate: (ev, ui) ->
@@ -36,13 +45,16 @@ Polymer
     
     ### @private ###
     _observer: (mutation) ->
-        haveAnything = $(this).find('*').length
-        if haveAnything
+        if this.disabled is 'true'
             $(this).droppable 'disable'
-            this.log "is occupied and hence not droppable"
         else
-            $(this).droppable 'enable'
-            this.log "is empty and hence droppable"
+            haveAnything = $(this).find('*').length
+            if haveAnything
+                $(this).droppable 'disable'
+                this.log "is occupied and hence not droppable"
+            else
+                $(this).droppable 'enable'
+                this.log "is empty and hence droppable"
         this
 
     ### @private ###
@@ -88,6 +100,11 @@ Polymer
         accept:
             type: String
             value: 'solitare-card'
+            notify: true
+            reflectToAttribute: true
+        disabled:
+            type: String
+            value: 'false'
             notify: true
             reflectToAttribute: true
         debug:

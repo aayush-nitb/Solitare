@@ -9,6 +9,8 @@ Polymer
             this.align this.dx, this.dy
         if name is 'draggable'
             this.setDraggable this.draggable
+        if name is 'droppable'
+            this.setDroppable(this.droppable)
         if name is 'show' and this.show is 'true'
             this.openCard()
         if name is 'show' and this.show is 'false'
@@ -39,7 +41,7 @@ Polymer
 
     ### @private ###
     _setDrag: () ->
-        if this.draggable is 'true' and this.show is 'true'
+        if this.draggable is 'true'
             $(this).draggable
                 snap: this.dropzone
                 snapMode: 'inner'
@@ -84,6 +86,7 @@ Polymer
 
         this.align this.dx, this.dy
         this._setDrag()
+        this.setDroppable(this.droppable)
         return
 
     ### @public ###
@@ -129,6 +132,13 @@ Polymer
     setDraggable: (value) ->
         this.draggable = value
         this._setDrag()
+        this
+
+    ### @public ###
+    setDroppable: (value) ->
+        this.droppable = value
+        notDroppable = if value is 'true' then 'false' else 'true'
+        $(this).find('> solitare-card-dropzone')[0].disabled = notDroppable
         this
 
     ### @public ###
@@ -181,6 +191,11 @@ Polymer
             notify: true
             reflectToAttribute: true
         draggable:
+            type: String
+            value: 'true'
+            notify: true
+            reflectToAttribute: true
+        droppable:
             type: String
             value: 'true'
             notify: true
