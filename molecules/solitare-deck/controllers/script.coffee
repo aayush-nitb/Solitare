@@ -20,8 +20,14 @@ Polymer
         deck = this
         elements = $(this).find(this.elements)
         this.log "has " + elements.length + " element(s)"
-        this.log "modifiers: " + JSON.stringify(this.modifiers)
+        modifierString = JSON.stringify this.modifiers
+        this.log "modifiers: " + modifierString if modifierString and modifierString isnt '{}'
+        this.log "applied registerAcceptor for child elements" if deck._acceptor
         elements.each () ->
+            if deck._acceptor
+                droppable = this
+                this.dropzone().registerAcceptor (draggable) ->
+                    return deck._acceptor(draggable, droppable)
             for modifier, value of deck.modifiers
                 this[modifier] = value
         this.onChange elements
@@ -35,10 +41,8 @@ Polymer
 
     ### @public ###
     registerAcceptor: (acceptor) ->
-        $(this).find(this.elements).each () ->
-            droppable = this
-            this.dropzone().registerAcceptor (draggable) ->
-                return acceptor(draggable, droppable)
+        this._acceptor = acceptor
+        this._observer()
         this
 
     ### @public ###
