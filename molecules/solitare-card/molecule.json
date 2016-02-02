@@ -26,7 +26,7 @@
     "setDroppable(bool)": "Set droppable attr.",
     "align(dx, dy)": "Set relative position of inner card.",
     "color()": "Get color of the card. This function cannot be chained with others as it returns string.",
-    "dropzone()" "Get object of solitare-card-dropzone to access its attrs, methods and events."
+    "dropzone()": "Get object of solitare-card-dropzone to access its attrs, methods and events.",
     "log(msg)": "Print tagged message in console."
   },
   "events": {

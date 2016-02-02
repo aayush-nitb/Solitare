@@ -18,9 +18,13 @@ Polymer
     ### @private ###
     _observer: (mutation) ->
         deck = this
-        $(this).find(this.elements).each () ->
+        elements = $(this).find(this.elements)
+        this.log "has " + elements.length + " element(s)"
+        this.log "modifiers: " + JSON.stringify(this.modifiers)
+        elements.each () ->
             for modifier, value of deck.modifiers
                 this[modifier] = value
+        this.onChange elements
         return
 
     ### @public ###
@@ -30,10 +34,22 @@ Polymer
         this
 
     ### @public ###
+    registerAcceptor: (acceptor) ->
+        $(this).find(this.elements).each () ->
+            droppable = this
+            this.dropzone().registerAcceptor (draggable) ->
+                return acceptor(draggable, droppable)
+        this
+
+    ### @public ###
     log: (msg) ->
         return if this.debug isnt 'true'
         console.log [this.tagName, {0:this}, msg]
         this
+
+    ### @event ###
+    onChange: (elements) ->
+        this.log "triggered default event: onChange"
 
     properties:
         elements:

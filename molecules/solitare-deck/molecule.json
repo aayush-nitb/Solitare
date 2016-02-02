@@ -9,6 +9,10 @@
   },
   "methods": {
     "setModifiers(modifiers)": "Setter function for modifiers attr.",
-    "log(msg)": "Print tagged message in console."
+    "log(msg)": "Print tagged message in console.",
+    "registerAcceptor(func)": "This registers a callback function which defines the drop is allowed are not, based on two objects (draggable, droppable) from func args. If func returns true the drop is accepted else rejected."
+  },
+  "events": {
+    "onChange(elements)": "Triggered when any dom changes occurs inside it. 'elements' is the jquery collection based on selector specified in attributes."
   }
 }

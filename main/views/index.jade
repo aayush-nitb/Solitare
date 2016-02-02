@@ -14,10 +14,10 @@ block molecules
 
 block content
     .-fx
-        solitare-deck
+        solitare-deck(debug="true", modifiers='{"dy":0}')
             solitare-card-dropzone
                 solitare-card(show="true")
-        solitare-deck(modifiers='{"show":"false"}', debug="true")
+        solitare-deck#allowSameColor
             solitare-card-dropzone
                 solitare-card(show="true")
                     solitare-card(show="true")

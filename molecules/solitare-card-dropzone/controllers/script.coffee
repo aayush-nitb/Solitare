@@ -32,9 +32,7 @@ Polymer
                 this.onDraggableOver ev, ui
                 return
             drop: (ev, ui) ->
-                suit = ui.draggable.attr 'suit'
-                value = ui.draggable.attr 'value'
-                if this._acceptor suit, value
+                if this._acceptor ui.draggable[0]
                     ui.draggable.detach()
                     $(this).append ui.draggable
                     this.onDropAccept ev, ui
@@ -58,7 +56,7 @@ Polymer
         this
 
     ### @private ###
-    _acceptor: (suit, value) ->
+    _acceptor: (draggable) ->
         true
 
     ### @public ###
