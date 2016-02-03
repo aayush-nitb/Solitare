@@ -2,7 +2,9 @@
   "name": "solitare-deck",
   "version": "0.0.1",
   "author": "aayush.nitb@gmail.com",
-  "dependencies": {},
+  "dependencies": {
+    "solitare-card": "0.0.1"
+  },
   "attrs": {
     "elements": ["string", "solitare-card", "Query selector to decide which elements should be modified."],
     "modifiers": ["object", "null", "Attributes of child elements to be modified."]

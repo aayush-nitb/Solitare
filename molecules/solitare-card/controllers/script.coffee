@@ -103,14 +103,12 @@ Polymer
         if this.suit is undefined and this.value is undefined
             this.shuffle()
         $(this).css this.openedCard
-        this._setDrag()
         this
 
     ### @public ###
     closeCard: () ->
         this.show = 'false'
         $(this).css this.closedCard
-        this._setDrag()
         this
 
     ### @public ###

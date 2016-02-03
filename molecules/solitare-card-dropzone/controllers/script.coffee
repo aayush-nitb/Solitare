@@ -7,10 +7,20 @@ Polymer
             this._observer()
         if name is 'accept'
             $(this).droppable "option", "accept", this.accept
+        if name is 'visible'
+            if this.visible is 'true'
+                $(this).addClass 'visible'
+                $(this).addClass 'solitare-card-dropzone'
+            else
+                $(this).removeClass 'visible'
+                $(this).removeClass 'solitare-card-dropzone'
         return
 
     ### @override ###
     attached: () ->
+        if this.visible is 'true'
+            $(this).addClass 'visible'
+            $(this).addClass 'solitare-card-dropzone'
         $(this).droppable
             accept: this.accept
             create: (ev, ui) ->
@@ -106,6 +116,11 @@ Polymer
             notify: true
             reflectToAttribute: true
         debug:
+            type: String
+            value: 'false'
+            notify: true
+            reflectToAttribute: true
+        visible:
             type: String
             value: 'false'
             notify: true
