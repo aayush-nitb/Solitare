@@ -1,4 +1,4 @@
-.flex-row-align() {
+.flex-col-align() {
     &.-alignL {
         justify-content: flex-start;
     }
@@ -40,7 +40,7 @@
     }
 }
 
-.flex-col-align() {
+.flex-row-align() {
     &.-alignL {
         align-items: flex-start;
     }
@@ -78,7 +78,7 @@
     }
 }
 
-.flex-row-padd() {
+.flex-col-padd() {
     &.-paddT {
         align-content: flex-end;
     }
@@ -104,7 +104,7 @@
     }
 }
 
-.flex-col-padd() {
+.flex-row-padd() {
     &.-paddL {
         align-content: flex-end;
     }
@@ -142,25 +142,28 @@
 
 .-fx{
     display: flex;
-    &.-col{
+    &.-rows{
         flex-direction: column;
-        .flex-col-align();
-        .flex-col-padd();
+        .flex-row-align();
+        .flex-row-padd();
     }
-    &.-row{
+    &.-cols{
         flex-direction: row;
-        .flex-row-align();
-        .flex-row-padd();
-    }
-    &.-rcol{
-        flex-direction: column-reverse;
         .flex-col-align();
         .flex-col-padd();
     }
-    &.-rrow{
-        flex-direction: row-reverse;
+    &.-rrows{
+        flex-direction: column-reverse;
         .flex-row-align();
         .flex-row-padd();
+    }
+    &.-rcols{
+        flex-direction: row-reverse;
+        .flex-col-align();
+        .flex-col-padd();
+    }
+    &.-fill > *{
+        flex-grow:1;
     }
     .flex-wrap();
 }
